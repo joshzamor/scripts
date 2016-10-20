@@ -18,6 +18,6 @@ eval $(docker-machine env)
 
 # handy alias
 alias dps="docker ps -a"
-alias dockerclean="docker images | grep \"<none>\" | awk '{print \$3}' | xargs docker rmi"
+alias dockerclean="docker images | grep \"<none>\" | awk '{print $3}' | xargs docker rmi"
 alias dstoprmall=dockerStopAndRmAll
 alias dstoprm=dockerStopAndRm
