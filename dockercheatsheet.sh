@@ -11,10 +11,9 @@ dockerStopAndRmAll() {
   docker rm $(docker ps -a -q)
 }
 
-# connect to docker-machine
-
-echo 'connecting to docker-machine'
-eval $(docker-machine env)
+# connect to docker-machine (uncomment below lines if using docker-machine
+#echo 'connecting to docker-machine'
+#eval $(docker-machine env)
 
 # handy alias
 alias dps="docker ps -a"
