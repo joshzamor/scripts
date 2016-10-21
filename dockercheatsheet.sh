@@ -18,6 +18,10 @@ dockerStopAndRmAll() {
   docker rm $(docker ps -a -q)
 }
 
+dockerVolumeClean() {
+  docker volume rm $(docker volume ls -qf dangling=true)
+}
+
 # connect to docker-machine (uncomment below lines if using docker-machine
 #echo 'connecting to docker-machine'
 #eval $(docker-machine env)
@@ -28,3 +32,4 @@ alias dpslike=dockerPsLike
 alias dockerclean="docker images | grep \"<none>\" | awk '{print $3}' | xargs docker rmi"
 alias dstoprmall=dockerStopAndRmAll
 alias dstoprm=dockerStopAndRm
+alias dvolclean=dockerVolumeClean
