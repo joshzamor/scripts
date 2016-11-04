@@ -9,6 +9,14 @@ dockerPsLikeIdOnly() {
   docker ps -a -q --filter name=$1
 }
 
+dockerImageGrep() {
+  docker images | grep -i $1
+}
+
+dockerImageGrepRm() {
+  dockerImageGrep $1 | awk '{print $3}' | xargs docker rmi
+}
+
 dockerStopAndRm() {
     docker rm $(docker stop $1)
 }
@@ -33,3 +41,5 @@ alias dockerclean="docker images | grep \"<none>\" | awk '{print $3}' | xargs do
 alias dstoprmall=dockerStopAndRmAll
 alias dstoprm=dockerStopAndRm
 alias dvolclean=dockerVolumeClean
+alias dimglike=dockerImageGrep
+alias dimglikerm=dockerImageGrepRm
