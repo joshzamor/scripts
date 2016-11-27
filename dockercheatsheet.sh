@@ -30,6 +30,10 @@ dockerVolumeClean() {
   docker volume rm $(docker volume ls -qf dangling=true)
 }
 
+dockerStats() {
+  docker stats $(docker ps --format '{{.Names}}')
+}
+
 # connect to docker-machine (uncomment below lines if using docker-machine
 #echo 'connecting to docker-machine'
 #eval $(docker-machine env)
@@ -43,3 +47,4 @@ alias dstoprm=dockerStopAndRm
 alias dvolclean=dockerVolumeClean
 alias dimglike=dockerImageGrep
 alias dimglikerm=dockerImageGrepRm
+alias dstats=dockerStats
